@@ -11,7 +11,7 @@ This action simplifies the GitHub release process by automatically uploading ass
 1. [How to get help](#how-to-get-help)
 1. [License](#license)
 
-> **NOTE**: The `marvinpinto/action-automatic-releases` repository is an automatically generated mirror of the [marvinpinto/actions](https://github.com/marvinpinto/actions) monorepo containing this and other actions. Please file issues and pull requests over there.
+> **NOTE**: The `Enase/action-automatic-releases` repository is an automatically generated mirror of the [Enase/actions](https://github.com/Enase/actions) monorepo containing this and other actions. Please file issues and pull requests over there.
 
 ## Usage Examples
 
@@ -26,34 +26,34 @@ This example workflow will kick in as soon as changes land on `master`. After ru
 1. Upload `LICENSE.txt` and any `jar` files as release assets.
 1. Mark this release as a `pre-release`.
 
-You can see a working example of this workflow over at [marvinpinto/actions](https://github.com/marvinpinto/actions/releases/tag/latest).
+You can see a working example of this workflow over at [Enase/actions](https://github.com/Enase/actions/releases/tag/latest).
 
 ```yaml
 ---
-name: "pre-release"
+name: 'pre-release'
 
 on:
   push:
     branches:
-      - "master"
+      - 'master'
 
 jobs:
   pre-release:
-    name: "Pre Release"
-    runs-on: "ubuntu-latest"
+    name: 'Pre Release'
+    runs-on: 'ubuntu-latest'
 
     steps:
       # ...
-      - name: "Build & test"
+      - name: 'Build & test'
         run: |
           echo "done!"
 
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - uses: 'Enase/action-automatic-releases@latest'
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          automatic_release_tag: 'latest'
           prerelease: true
-          title: "Development Build"
+          title: 'Development Build'
           files: |
             LICENSE.txt
             *.jar
@@ -67,31 +67,31 @@ Similar to the previous example, this workflow will kick in as soon as new tags 
 1. Generate a new release and associate it with this tag.
 1. Upload `LICENSE.txt` and any `jar` files as release assets.
 
-Once again there's an example of this over at [marvinpinto/actions](https://github.com/marvinpinto/actions/releases/latest).
+Once again there's an example of this over at [Enase/actions](https://github.com/Enase/actions/releases/latest).
 
 ```yaml
 ---
-name: "tagged-release"
+name: 'tagged-release'
 
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   tagged-release:
-    name: "Tagged Release"
-    runs-on: "ubuntu-latest"
+    name: 'Tagged Release'
+    runs-on: 'ubuntu-latest'
 
     steps:
       # ...
-      - name: "Build & test"
+      - name: 'Build & test'
         run: |
           echo "done!"
 
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - uses: 'Enase/action-automatic-releases@latest'
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
           prerelease: false
           files: |
             LICENSE.txt
@@ -116,6 +116,7 @@ The following output values can be accessed via `${{ steps.<step-id>.outputs.<ou
 | Name                     | Description                                            | Type   |
 | ------------------------ | ------------------------------------------------------ | ------ |
 | `automatic_releases_tag` | The release tag this action just processed             | string |
+| `release_id`             | The release id                                         | string |
 | `upload_url`             | The URL for uploading additional assets to the release | string |
 
 ### Notes:
@@ -132,12 +133,8 @@ The GitHub Actions framework allows you to trigger this (and other) actions on _
 Every commit that lands on master for this project triggers an automatic build as well as a tagged release called `latest`. If you don't wish to live on the bleeding edge you may use a stable release instead. See [releases](../../releases/latest) for the available versions.
 
 ```yaml
-- uses: "marvinpinto/action-automatic-releases@<VERSION>"
+- uses: 'Enase/action-automatic-releases@<VERSION>'
 ```
-
-## How to get help
-
-The main [README](https://github.com/marvinpinto/actions/blob/master/README.md) for this project has a bunch of information related to debugging & submitting issues. If you're still stuck, try and get a hold of me on [keybase](https://keybase.io/marvinpinto) and I will do my best to help you out.
 
 ## License
 
